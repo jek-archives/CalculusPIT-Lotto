@@ -14,7 +14,21 @@ class LottoApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Megalotto 6/45")
-        self.root.geometry("820x600")
+        
+        # Get screen dimensions
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+
+        # Set window size
+        window_width = 820
+        window_height = 600
+
+        # Calculate the position to center the window
+        position_top = int(screen_height / 2 - window_height / 2)
+        position_left = int(screen_width / 2 - window_width / 2)
+
+        # Set geometry of the window
+        self.root.geometry(f'{window_width}x{window_height}+{position_left}+{position_top}')
         self.root.configure(bg="#ECF0F1")
         self.root.minsize(720, 500)
 
@@ -33,6 +47,7 @@ class LottoApp:
         self.history = []
 
         self.build_ui()
+
 
     def build_ui(self):
         main_frame = tk.Frame(self.root, bg=self.COLOR_BG, padx=20, pady=20)
